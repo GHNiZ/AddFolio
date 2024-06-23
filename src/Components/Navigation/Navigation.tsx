@@ -12,7 +12,8 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ isSignIn, setIsSignIn }) => {
     return (
-        <Router>
+        <Router basename="AddFolio">
+        {/* // <Router > */}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">Ghnizz</Link>
@@ -34,6 +35,7 @@ const Navigation: React.FC<NavigationProps> = ({ isSignIn, setIsSignIn }) => {
                             </li>
                             <li className="nav-item">
                             <li className="nav-item">
+                                
                                 {isSignIn ? (
                                     <Link className="nav-link" to="/signIn">Logout</Link>
                                 ) : (
@@ -51,11 +53,13 @@ const Navigation: React.FC<NavigationProps> = ({ isSignIn, setIsSignIn }) => {
                     <Route path="/about" element={<About title="About" />} />
                     <Route path="/signIn" element={<SignIn title="Sign-In" setIsSignIn={setIsSignIn} isSignIn={isSignIn} />} />
 
-                    {isSignIn ? (
+                    {isSignIn &&
+                        <Route path="/adds" element={<Adds title="Manage Ads" />} />}
+                    {/* {isSignIn ? (
                         <Route path="/adds" element={<Adds title="Manage Ads" />} />
                     ) : (
                         <Route path="*" element={<Navigate to="/signIn" />} />
-                    )}
+                    )} */}
                 </Routes>
             </div>
 
